@@ -109,12 +109,12 @@ end
 end)
 --- // End of Particle Effect // ---
 
-local instaLabel = Instance.new("TextLabel", mainFrame); instaLabel.Size = UDim2.new(1, 0, 0, 20); instaLabel.Position = UDim2.new(0, 0, 1, -25); instaLabel.Text = "INSTAGRAM: ASHERX_.PVT"; instaLabel.Font = Enum.Font.GothamBold; instaLabel.TextSize = 10; instaLabel.BackgroundTransparency = 1; instaLabel.TextColor3 = Color3.new(1,1,1)
+local instaLabel = Instance.new("TextLabel", mainFrame); instaLabel.Size = UDim2.new(1, 0, 0, 20); instaLabel.Position = UDim2.new(0, 0, 1, -25); instaLabel.Text = "INSTAGRAM: MYST1C4SHER"; instaLabel.Font = Enum.Font.GothamBold; instaLabel.TextSize = 10; instaLabel.BackgroundTransparency = 1; instaLabel.TextColor3 = Color3.new(1,1,1)
 
 local headerHeight = 50
 local header = Instance.new("Frame", mainFrame); header.Size = UDim2.new(1, 0, 0, headerHeight); header.BackgroundColor3 = Color3.fromRGB(10,10,10); header.BorderSizePixel = 0; Instance.new("UICorner", header).CornerRadius = UDim.new(0, 10)
 local title = Instance.new("TextLabel", header); title.Size = UDim2.new(0.6, 0, 0.5, 0); title.Position = UDim2.new(0.05, 0, 0.15, 0); title.Text = "AXER SPAMMER"; title.Font = Enum.Font.GothamBlack; title.TextSize = 16; title.TextColor3 = Color3.new(1,1,1); title.TextXAlignment = Enum.TextXAlignment.Left; title.BackgroundTransparency = 1
-local version = Instance.new("TextLabel", header); version.Size = UDim2.new(0.2, 0, 0.3, 0); version.Position = UDim2.new(0.05, 0, 0.6, 0); version.Text = "V1.1"; version.Font = Enum.Font.Gotham; version.TextSize = 10; version.TextColor3 = Color3.fromRGB(200,200,200); version.TextXAlignment = Enum.TextXAlignment.Left; version.BackgroundTransparency = 1
+local version = Instance.new("TextLabel", header); version.Size = UDim2.new(0.2, 0, 0.3, 0); version.Position = UDim2.new(0.05, 0, 0.6, 0); version.Text = "V1.2"; version.Font = Enum.Font.Gotham; version.TextSize = 10; version.TextColor3 = Color3.fromRGB(200,200,200); version.TextXAlignment = Enum.TextXAlignment.Left; version.BackgroundTransparency = 1
 local idLabel = Instance.new("TextLabel", header); idLabel.Size = UDim2.new(0.4, 0, 0.4, 0); idLabel.Position = UDim2.new(0.45, 0, 0.45, 0); idLabel.Text = "ID: " .. lp.UserId; idLabel.Font = Enum.Font.GothamMedium; idLabel.TextSize = 10; idLabel.TextColor3 = Color3.fromRGB(180,180,180); idLabel.TextXAlignment = Enum.TextXAlignment.Right; idLabel.BackgroundTransparency = 1
 local pfpFrame = Instance.new("ImageLabel", header); pfpFrame.Size = UDim2.new(0, 38, 0, 38); pfpFrame.Position = UDim2.new(0.97, -38, 0.5, -19); pfpFrame.BackgroundColor3 = Color3.fromRGB(20,20,20); pfpFrame.Image = "rbxthumb://type=AvatarHeadShot&id=" .. lp.UserId .. "&w=150&h=150"; Instance.new("UICorner", pfpFrame).CornerRadius = UDim.new(1, 0); local pfpStroke = Instance.new("UIStroke", pfpFrame); pfpStroke.Thickness = 2
 
