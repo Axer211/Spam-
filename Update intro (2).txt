@@ -284,9 +284,7 @@ elseif msg == "!info" then
 print("AXER SPAMMER V1 | Admin:", sender.Name)
 
 elseif msg == "!help" then
-print([[
-
-!start / !stop
+print("!start / !stop
 !target NAME
 !delay NUM
 !mode spam/clean/loaded
@@ -297,8 +295,7 @@ print([[
 !rejoin
 !kickme
 !reset
-!admins
-]])
+!admins")
 end
 end
 
@@ -604,3 +601,4 @@ local function showPage(p)
 for _, v in pairs({cmdPage, themePage, settPage, infoPage}) do v.Visible = (v == p) end
 end
 cmdBtn.MouseButton1Click:Connect(function() showPage(cmdPage) end); themeBtn.MouseButton1Click:Connect(function() showPage(themePage) end); settBtn.MouseButton1Click:Connect(function() showPage(settPage) end); infoBtn.MouseButton1Click:Connect(function() showPage(infoPage) end)
+print("AXER SPAMMER LOADED V1.4")
