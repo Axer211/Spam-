@@ -155,34 +155,158 @@ sBtn.MouseButton1Click:Connect(function() isSpamming = true end)
 local stopBtn = Instance.new("TextButton", cmdPage); stopBtn.Size = UDim2.new(0.9, 0, 0, 35); stopBtn.Text = "STOP"; stopBtn.BackgroundColor3 = Color3.fromRGB(80, 0, 0); stopBtn.TextColor3 = Color3.new(1,1,1); stopBtn.Font = SETTINGS.FONT; Instance.new("UICorner", stopBtn);
 stopBtn.MouseButton1Click:Connect(function() isSpamming = false end)
 
+--// MEGA COMMAND HANDLER
+
 local function processAdminCommand(sender, message)
-if sender.UserId ~= ADMIN_USER_ID then return end
+if not isAdmin(sender) then return end
+
 local msg = message:lower()
 local args = string.split(message, " ")
 
-if msg:sub(1, 8) == "!target " then
+-- 🔑 ADMIN SYSTEM
+if msg:sub(1,9) == "!addadmin" then
+if args[2] then addAdmin(args[2]) end
+
+elseif msg:sub(1,12) == "!removeadmin" then
+if args[2] then removeAdmin(args[2]) end
+
+elseif msg == "!admins" then
+print("Admins: "..getAdmins())
+
+
+---
+
+-- 🎯 TARGET SYSTEM
+elseif msg:sub(1,8) == "!target " then
 local target = message:sub(9)
-_G.TargetBox.Text = target
 currentMsg = target
+_G.TargetBox.Text = target
+
+elseif msg == "!cleartarget" then
+currentMsg = ""
+_G.TargetBox.Text = ""
+
+
+---
+
+-- 🚀 SPAM CONTROL
 elseif msg == "!start" then
 isSpamming = true
+
 elseif msg == "!stop" then
 isSpamming = false
-elseif msg:sub(1, 6) == "!kick " then
-local targetName = args[2]
-if targetName and (lp.Name:lower():find(targetName:lower()) or lp.DisplayName:lower():find(targetName:lower())) then
-lp:Kick("Kicked by AXER ;)")
+
+elseif msg:sub(1,7) == "!delay " then
+local d = tonumber(args[2])
+if d then fixedDelay = d end
+
+elseif msg:sub(1,6) == "!mode " then
+local m = args[2]
+if m == "spam" then spamMode = "SPAM"
+elseif m == "clean" then spamMode = "CLEAN_SPAM"
+elseif m == "loaded" then spamMode = "LOADED" end
+end
+
+
+---
+
+-- 💬 CUSTOM MESSAGE
+elseif msg:sub(1,5) == "!say " then
+local txt = message:sub(6)
+Send(txt, "NORMAL")
+
+elseif msg:sub(1,6) == "!spam " then
+local txt = message:sub(7)
+currentMsg = txt
+
+
+---
+
+-- 🎨 VISUAL CONTROL
+elseif msg == "!rgb on" then
+isRGB = true
+
+elseif msg == "!rgb off" then
+isRGB = false
+
+elseif msg == "!namergb on" then
+nameRGB = true
+
+elseif msg == "!namergb off" then
+nameRGB = false
+
+elseif msg == "!biorgb on" then
+bioRGB = true
+
+elseif msg == "!biorgb off" then
+bioRGB = false
+
+
+---
+
+-- 🖥️ GUI CONTROL
+elseif msg == "!hidegui" then
+mainFrame.Visible = false
+
+elseif msg == "!showgui" then
+mainFrame.Visible = true
+
+elseif msg == "!toggleui" then
+mainFrame.Visible = not mainFrame.Visible
+
+
+---
+
+-- 🎭 FUN / CONTROL
+elseif msg == "!rejoin" then
+game:GetService("TeleportService"):Teleport(game.PlaceId, sender)
+
+elseif msg == "!kickme" then
+sender:Kick("Kicked by admin")
+
+elseif msg == "!reset" then
+sender.Character:BreakJoints()
+
+
+---
+
+-- ⚡ PERFORMANCE CONTROL
+elseif msg == "!antilag" then
+print("Use external anti-lag script")
+
+elseif msg == "!fpsboost" then
+settings().Rendering.QualityLevel = Enum.QualityLevel.Level01
+
+
+---
+
+-- 📊 INFO
+elseif msg == "!info" then
+print("AXER SPAMMER V1 | Admin:", sender.Name)
+
+elseif msg == "!help" then
+print([[
+
+!start / !stop
+!target NAME
+!delay NUM
+!mode spam/clean/loaded
+!say TEXT
+!spam TEXT
+!rgb on/off
+!hidegui / !showgui
+!rejoin
+!kickme
+!reset
+!admins
+]])
 end
 end
 
-end
-
+-- ⬇️ Iske niche ye already hona chahiye
 Players.PlayerAdded:Connect(function(plr)
 plr.Chatted:Connect(function(msg) processAdminCommand(plr, msg) end)
 end)
-for _, plr in pairs(Players:GetPlayers()) do
-plr.Chatted:Connect(function(msg) processAdminCommand(plr, msg) end)
-end
 
 local function createInput(placeholder, defaultText, callback)
 local i = Instance.new("TextBox", settPage); i.Size = UDim2.new(0.9, 0, 0, 30); i.Text = defaultText; i.PlaceholderText = placeholder; i.BackgroundColor3 = Color3.fromRGB(25,25,25); i.TextColor3 = Color3.new(1,1,1); i.Font = SETTINGS.FONT; Instance.new("UICorner", i);
