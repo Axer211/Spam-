@@ -68,7 +68,6 @@ else
 finalMsg = text
 end
 pcall(function() TCS.TextChannels.RBXGeneral:SendAsync(finalMsg) end)
-pcall(function() ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer(finalMsg, "All") end)
 
 end
 
