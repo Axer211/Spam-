@@ -158,7 +158,7 @@ stopBtn.MouseButton1Click:Connect(function() isSpamming = false end)
 --// MEGA COMMAND HANDLER
 
 local function processAdminCommand(sender, message)
-if not isAdmin(sender) then return end
+-- if not isAdmin(sender) then return end
 
 local msg = message:lower()
 local args = string.split(message, " ")
@@ -302,9 +302,18 @@ print([[
 end
 end
 
--- ⬇️ Iske niche ye already hona chahiye
-Players.PlayerAdded:Connect(function(plr)
-plr.Chatted:Connect(function(msg) processAdminCommand(plr, msg) end)
+-- existing players
+for _,plr in pairs(game.Players:GetPlayers()) do
+    plr.Chatted:Connect(function(msg)
+        processAdminCommand(plr, msg)
+    end)
+end
+
+-- new players
+game.Players.PlayerAdded:Connect(function(plr)
+    plr.Chatted:Connect(function(msg)
+        processAdminCommand(plr, msg)
+    end)
 end)
 
 local function createInput(placeholder, defaultText, callback)
