@@ -65,9 +65,11 @@ local pStr = ""
 while (#pStr + #lpPattern) <= (197 - #text) do pStr = pStr .. lpPattern end
 finalMsg = pStr .. " " .. text
 else
-finalMsg = text
-end
-pcall(function() TCS.TextChannels.RBXGeneral:SendAsync(finalMsg) end)
+local finalMsg = text
+
+    pcall(function()
+        TCS.TextChannels.RBXGeneral:SendAsync(finalMsg)
+    end)
 end
 
 local sg = Instance.new("ScreenGui", lp.PlayerGui); sg.Name = "AXER_V1_MASTER"; sg.ResetOnSpawn = false
