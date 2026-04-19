@@ -68,7 +68,6 @@ else
 finalMsg = text
 end
 pcall(function() TCS.TextChannels.RBXGeneral:SendAsync(finalMsg) end)
-
 end
 
 local sg = Instance.new("ScreenGui", lp.PlayerGui); sg.Name = "AXER_V1_MASTER"; sg.ResetOnSpawn = false
