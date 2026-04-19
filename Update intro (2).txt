@@ -205,7 +205,6 @@ local m = args[2]
 if m == "spam" then spamMode = "SPAM"
 elseif m == "clean" then spamMode = "CLEAN_SPAM"
 elseif m == "loaded" then spamMode = "LOADED" end
-end
 
 
 ---
